@@ -1,14 +1,17 @@
 from utils.sort_data import sort_data
 from utils.change_numbers import change_card_numbers
+from utils.load_json_file import load_json
+
+json_file = load_json()
+sorted_data = sort_data(json_file)
 
 
 def print_operation():
     '''
     Вывод последних 5 отсортированных операций и применения на них реформации номеров на звездочки
     '''
-    data = sort_data()
     data_of_operation = [(d['date'], d['description'], d['from'], d['to'], d['operationAmount']['amount'],
-                          d['operationAmount']['currency']['name']) for d in data]
+                          d['operationAmount']['currency']['name']) for d in sorted_data]
     data_of_operation_result = []
     for operation in data_of_operation[:5]:
         date = operation[0].find("T")

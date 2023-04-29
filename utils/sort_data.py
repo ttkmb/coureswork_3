@@ -1,13 +1,13 @@
 import operator
 from utils.load_json_file import load_json
 
+data = load_json()
 
 
-def sort_data():
+def sort_data(data):
     '''
     Сортирую полученный файл по полю 'date', проверяя пустые словари
     '''
-    data = load_json()
     dict_to_use = []
     executed_dict = []
     for operation in data:
@@ -19,5 +19,4 @@ def sort_data():
                     'description': d['description'], 'from': d['from'], 'to': d['to']}
         executed_dict.append(executed)
     return executed_dict
-
 
